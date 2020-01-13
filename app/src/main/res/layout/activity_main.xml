@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+    <ImageView
+        android:id="@+id/button_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="6dp"
+        android:padding="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_news_back" />
+
+
+
+
+    <TextView
+        android:id="@+id/text_url"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="50dp"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:background="@drawable/bg_news_text_url"
+        app:layout_constraintBottom_toBottomOf="@id/button_back"
+        app:layout_constraintLeft_toRightOf="@id/button_back"
+        app:layout_constraintRight_toLeftOf="@id/button_refresh_url"
+        app:layout_constraintTop_toTopOf="@id/button_back" />
+
+    <ImageView
+        android:id="@+id/button_refresh_url"
+        android:layout_width="47dp"
+        android:layout_height="32dp"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="@id/text_url"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_url"
+        app:srcCompat="@drawable/ic_news_refresh" />
+
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progress_loading"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="6dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/bg_news_loading_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_url" />
+
+    <ImageView
+        android:id="@+id/button_previous"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:srcCompat="@drawable/ic_disable_back" />
+
+    <ImageView
+        android:id="@+id/button_next"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/button_previous"
+        app:srcCompat="@drawable/ic_disable_forward" />
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/button_previous"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_loading"
+        app:layout_goneMarginTop="6dp">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
